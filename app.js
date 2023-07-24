@@ -4,7 +4,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const createError = require('http-errors');
 
-const { indexRoutes, userRoutes, bookRoutes } = require('./routes');
+const { indexRoutes, authorRoutes, genreRoutes, publisherRoutes, userRoutes, bookRoutes } = require('./routes');
 
 const app = express();
 
@@ -15,8 +15,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRoutes);
+app.use('/author', authorRoutes);
+app.use('/genre', genreRoutes);
+app.use('/publisher', publisherRoutes);
 app.use('/users', userRoutes);
-app.use('/book', bookRoutesRoutes);
+app.use('/book', bookRoutes);
 
 
 // catch 404 and forward to error handler
@@ -27,7 +30,7 @@ app.use(function (req, res, next) {
 // error handler
 app.use(function (err, req, res) {
     // set locals, only providing error in development
-    
+
     const error = req.app.get('env') === 'development' ? err : {};
 
     // render the error page
