@@ -197,7 +197,7 @@ async function deleteBook(req, res) {
 }
 
 // Find All Book New Arrival
-async function newarrival(req, res) {
+async function allBooks(req, res) {
     try {
         const result = await db.book.find().sort({ createdAt: -1 }).limit(25);
         if (result.length === 0) {
@@ -218,5 +218,5 @@ module.exports = {
     detail,
     update,
     deleteBook,
-    newarrival,
+    allBooks,
 }

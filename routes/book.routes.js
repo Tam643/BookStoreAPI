@@ -4,7 +4,7 @@ const { formidable } = require('../middlewares');
 const router = express.Router();
 
 router.route('/')
-    .get(bookController.newarrival)
+    .get(bookController.allBooks)
     .post(formidable, bookController.create);
 router.route('/:id')
     .get(bookController.detail)
