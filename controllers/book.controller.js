@@ -1,18 +1,7 @@
 const fs = require('fs-extra');
-const { createBookSchema, bookSchema } = require('../validators');
+const { createBookSchema, bookSchema, searchBookSchema } = require('../validators');
 const { findAndCreateGenres } = require('../services');
 const db = require('../models');
-
-// Error handler if controller is not work
-function onResponse({ res, status = 500, successfuly = false, message = 'An error occurred on the server', error = null }) {
-    if (error || successfuly === false) {
-        console.error(error);
-        res.status(status).json({ success: successfuly, error: message });
-    } else {
-        res.status(status).json({ success: successfuly, message: message });
-    }
-    return;
-}
 
 // Helper Find name of key in object
 function findKeyInObject(obj, keyToFind) {
@@ -27,72 +16,25 @@ function findKeyInObject(obj, keyToFind) {
 // Create new Book
 async function create(req, res) {
     try {
-        /*
-            Validate schema of request
-            {
-                image: any type, is required,
-                title: string, is required,
-                author: string, is required,
-                description: string,
-                isbn: string, is required,
-                genres: array[items(string, is required)],
-                publisher: string, is required,
-                prices: array[
-                        object({
-                            type: string, is required,
-                            price: string, is required
-                        })
-                    ]  
-                )
-            }
-        */
         const { error, value } = await createBookSchema.validate(req.body);
         if (error) {
-            onResponse({
-                res,
-                status: 400,
-                message: `The request data is invalid. ${error.message.trim()}`,
-                error: error
-            });
+            return res.status(400).json({ success: false, error: 'The request data is invalid.' })
         }
-        /*
-            ensure file type is only image
-            if image store image data in data object
-            schema of image   
-            image:{
-                filename:{ type: String,required: true, trim: true },
-                data:{ type: Buffer,required: true },
-                type:{ type: String,required: true, trim: true }
-            },
-        */
         const { image } = value
         const imageType = image.mimetype.substr(0, 5).trim();
         if (imageType !== "image") {
-            onResponse({
-                res,
-                status: 400,
-                message: 'The request data is invalid. File should be image only',
-                error: error
-            });
+            return res.status(400).json({ success: false, error: 'The request data is invalid. File should be image only' })
         }
         value.image.filename = image.newFilename;
-        // convert image file to binary data prepare to save in database
         value.image.data = await fs.readFile(image.filepath);
         value.image.type = image.mimetype;
-        // Find genre if exist return objetId
-        // else create new genre and return objectId 
-        // example datatype [objectId("genre1"), objectId("genre2")]
         value.genres = await findAndCreateGenres(value.genres, db);
         await fs.unlink(image.filepath);
         await db.book.create(value);
-        onResponse({
-            res,
-            status: 201,
-            successfuly: true,
-            message: 'Create new book successfuly',
-        });
+        return res.status(201).json({ success: true, message: 'Create new book successfuly' })
+
     } catch (error) {
-        onResponse({ res });
+        return res.status(500).json({ success: false, error: 'An error occurred on the server' })
     }
 }
 
@@ -100,24 +42,15 @@ async function create(req, res) {
 async function detail(req, res) {
     try {
         if (!db.mongoose.Types.ObjectId.isValid(req.params.id)) {
-            onResponse({
-                res,
-                status: 400,
-                error: true,
-                message: 'The request data is invalid.'
-            })
+            return res.sctatus(400).json({ success: false, error: 'The request data is invalid.' })
         }
         const result = await db.book.findById(req.params.id).select('_id image description title author genres prices publisher').populate('genres', 'name');
         if (!result) {
-            onResponse({
-                res,
-                status: 404,
-                message: 'The requested resource was not found.',
-            });
+            return res.sctatus(404).json({ success: false, error: 'The requested resource was not found.' })
         }
         res.status(200).json({ success: true, result });
     } catch (error) {
-        onResponse({ res });
+        return res.status(500).json({ success: false, error: 'An error occurred on the server' })
     }
 }
 
@@ -125,21 +58,8 @@ async function detail(req, res) {
 async function update(req, res) {
     try {
         const { error, value } = bookSchema.validate(req.body);
-        if (error) {
-            onResponse({
-                res,
-                status: 400,
-                message: 'The request data is invalid.',
-                error: error
-            });
-        }
-        if (!db.mongoose.Types.ObjectId.isValid(req.params.id) && !req.params.id) {
-            onResponse({
-                res,
-                status: 400,
-                error: true,
-                message: 'The request data is invalid.'
-            })
+        if (error || !db.mongoose.Types.ObjectId.isValid(req.params.id) || !req.params.id) {
+            return res.sctatus(400).json({ success: false, error: 'The request data is invalid.' })
         }
         if (findKeyInObject(value, "genres")) {
             value.genres = await findAndCreateGenres(value.genres, db);
@@ -147,21 +67,11 @@ async function update(req, res) {
         const ObjectId = req.params.id;
         const updatedDocument = await db.book.findByIdAndUpdate(ObjectId, value, { new: true });
         if (!updatedDocument) {
-            onResponse({
-                res,
-                status: 404,
-                error: true,
-                message: 'The requested resource was not found.'
-            })
+            return res.sctatus(404).json({ success: false, error: 'The requested resource was not found.' })
         }
-        onResponse({
-            res,
-            status: 200,
-            successfuly: true,
-            message: 'The book was successfully updated'
-        })
+        return res.status(200).json({ success: true, message: 'The book was successfully updated' })
     } catch (error) {
-        onResponse({ res });
+        return res.status(500).json({ success: false, error: 'An error occurred on the server' })
     }
 }
 
@@ -169,30 +79,15 @@ async function update(req, res) {
 async function deleteBook(req, res) {
     try {
         if (!db.mongoose.Types.ObjectId.isValid(req.params.id)) {
-            onResponse({
-                res,
-                status: 404,
-                error: true,
-                message: 'The book with the specified ID was not found'
-            })
+            return res.status(404).json({ success: false, error: 'The book with the specified ID was not found' })
         }
         const deletedDocument = await db.book.findByIdAndDelete(req.params.id);
         if (!deletedDocument) {
-            onResponse({
-                res,
-                status: 404,
-                error: true,
-                message: 'The book with the specified ID was not found'
-            })
+            return res.status(404).json({ success: false, error: 'The book with the specified ID was not found' })
         }
-        onResponse({
-            res,
-            status: 204,
-            successfuly: true,
-            message: 'The book has been deleted'
-        })
+        return res.status(204).json({ success: true, message: 'The book has been deleted' })
     } catch (error) {
-        onResponse({ res });
+        return res.status(500).json({ success: false, error: 'An error occurred on the server' })
     }
 }
 
@@ -203,22 +98,31 @@ function isObjectNotEmpty(obj) {
 // Find All Book New Arrival
 async function allBooks(req, res) {
     try {
-        let result;
         if (isObjectNotEmpty(req.query)) {
-            
-        } else {
-            result = await db.book.find().sort({ createdAt: -1 }).limit(25);
-            if (result.length === 0) {
-                onResponse({
-                    res,
-                    status: 404,
-                    message: 'The requested resource was not found.',
-                });
+            const { error, value } = searchBookSchema.validate(req.query);
+            if (error) {
+                return res.status(400).json({ success: false, error: 'The request data is invalid.' })
             }
+            for (let key in value) {
+                if (key !== "isbn") {
+                    value[key] = new RegExp(value[key], 'i');
+                }
+                if (key === "genres") {
+                    const genre = await db.genre.findOne({ name: value[key] })
+                    value[key] = { $in: genre._id };
+                }
+            }
+            const result = await db.book.find(value).sort({ createdAt: -1 }).limit(25);
+            return res.status(200).json(result);
+        } else {
+            const result = await db.book.find().sort({ createdAt: -1 }).limit(25);
+            if (result.length === 0) {
+                return res.status(404).json({ success: false, error: 'The requested resource was not found.' })
+            }
+            return res.status(200).json(result);
         }
-        res.status(200).json(result);
     } catch (error) {
-        onResponse({ res });
+        return res.status(500).json({ success: false, error: 'An error occurred on the server' })
     }
 }
 

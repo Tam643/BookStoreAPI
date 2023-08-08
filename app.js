@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const createError = require('http-errors');
 const mongoose  = require('mongoose');
-const { authorRoutes, genreRoutes, publisherRoutes, userRoutes, bookRoutes } = require('./routes');
+const {  genreRoutes, userRoutes, bookRoutes } = require('./routes');
 
 const app = express();
 
@@ -24,9 +24,7 @@ app.set("view engine", "jade");
 require('./configs/db.config')(mongoose);
 
 // Define route
-app.use('/author', authorRoutes);
 app.use('/genre', genreRoutes);
-app.use('/publisher', publisherRoutes);
 app.use('/users', userRoutes);
 app.use('/book', bookRoutes);
 
