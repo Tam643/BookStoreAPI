@@ -1,5 +1,5 @@
 module.exports = {
-    bookSchema : require('./book.validator'),
+    createBookSchema : require('./createBook.validator'),
     genreSchema : require('./genre.validator'),
-    bookUpdateSchema : require('./bookUpdate.validator'),
+    bookSchema : require('./book.validator'),
 }

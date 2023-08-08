@@ -1,5 +1,5 @@
 const fs = require('fs-extra');
-const { bookSchema, bookUpdateSchema } = require('../validators');
+const { createBookSchema, bookSchema } = require('../validators');
 const { findAndCreateGenres } = require('../services');
 const db = require('../models');
 
@@ -17,12 +17,12 @@ function onResponse({ res, status = 500, successfuly = false, message = 'An erro
 // Helper Find name of key in object
 function findKeyInObject(obj, keyToFind) {
     for (let key in obj) {
-      if (key === keyToFind) {
-        return true; // Key found
-      }
+        if (key === keyToFind) {
+            return true; // Key found
+        }
     }
     return false; // Key not found
-  }
+}
 
 // Create new Book
 async function create(req, res) {
@@ -46,7 +46,7 @@ async function create(req, res) {
                 )
             }
         */
-        const { error, value } = await bookSchema.validate(req.body);
+        const { error, value } = await createBookSchema.validate(req.body);
         if (error) {
             onResponse({
                 res,
@@ -124,7 +124,7 @@ async function detail(req, res) {
 // Update Book
 async function update(req, res) {
     try {
-        const { error, value } = bookUpdateSchema.validate(req.body);
+        const { error, value } = bookSchema.validate(req.body);
         if (error) {
             onResponse({
                 res,
@@ -141,7 +141,7 @@ async function update(req, res) {
                 message: 'The request data is invalid.'
             })
         }
-        if(findKeyInObject(value, "genres")){
+        if (findKeyInObject(value, "genres")) {
             value.genres = await findAndCreateGenres(value.genres, db);
         }
         const ObjectId = req.params.id;
@@ -157,7 +157,7 @@ async function update(req, res) {
         onResponse({
             res,
             status: 200,
-            successfuly:true,
+            successfuly: true,
             message: 'The book was successfully updated'
         })
     } catch (error) {
@@ -196,16 +196,25 @@ async function deleteBook(req, res) {
     }
 }
 
+function isObjectNotEmpty(obj) {
+    return Object.keys(obj).length > 0;
+}
+
 // Find All Book New Arrival
 async function allBooks(req, res) {
     try {
-        const result = await db.book.find().sort({ createdAt: -1 }).limit(25);
-        if (result.length === 0) {
-            onResponse({
-                res,
-                status: 404,
-                message: 'The requested resource was not found.',
-            });
+        let result;
+        if (isObjectNotEmpty(req.query)) {
+            
+        } else {
+            result = await db.book.find().sort({ createdAt: -1 }).limit(25);
+            if (result.length === 0) {
+                onResponse({
+                    res,
+                    status: 404,
+                    message: 'The requested resource was not found.',
+                });
+            }
         }
         res.status(200).json(result);
     } catch (error) {
