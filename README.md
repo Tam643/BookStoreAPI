@@ -1,2 +1,2 @@
-# BookStoreAPI
-Server-side REST API that serves requests from Frontend App
+# BookStoreApi ( หลังบ้านร้านขายหนังสือ )
+เป็น Backend ของร้านขายหนังสือ โดยมีวัตถุประสงค์เพื่อให้นักพัฒนาใช้เป็นแนวทางในการพัฒนาต่อ หรือใช้เป็น MockupApi เพื่อส่งข้อมูลให้ Fontend
