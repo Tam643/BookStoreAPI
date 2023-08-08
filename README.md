@@ -1,9 +1,9 @@
 <a name="readme-top"></a>
 
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
+[![Contributors][contributors-shield]][https://github.com/Tam643/BookStoreAPI/graphs/contributors]
+[![Forks][forks-shield]][https://github.com/Tam643/BookStoreAPI/forks]
+[![Stargazers][stars-shield]][https://github.com/Tam643/BookStoreAPI/stargazers]
+[![Issues][issues-shield]][https://github.com/Tam643/BookStoreAPI/issues]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
