@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const createError = require('http-errors');
 const mongoose  = require('mongoose');
-const {  genreRoutes, userRoutes, bookRoutes } = require('./routes');
+const {  genreRoutes, authRoutes, bookRoutes } = require('./routes');
 
 const app = express();
 
@@ -25,7 +25,7 @@ require('./configs/db.config')(mongoose);
 
 // Define route
 app.use('/genre', genreRoutes);
-app.use('/users', userRoutes);
+app.use('/auth', authRoutes);
 app.use('/book', bookRoutes);
 
 
