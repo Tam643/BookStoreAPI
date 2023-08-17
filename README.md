@@ -11,7 +11,9 @@
 <div align="center">
 
   <h3 align="center">BookStoreAPI</h3>
+<p>
 This is a basic REST API skeleton written on Javascript.<br>Great for building a starter web API for your front-end<br>(Vue, React, Angular, or anything that can consume an API).
+</p>
   <p align="center">
     <a href="https://github.com/Tam643/BookStoreAPI/issues">Report Bug</a>
     ·
@@ -25,6 +27,7 @@ This is a basic REST API skeleton written on Javascript.<br>Great for building a
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
+        <li><a href="#features">Features</a></li>
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
@@ -42,6 +45,28 @@ This is a basic REST API skeleton written on Javascript.<br>Great for building a
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
+
+## About the project
+The BookStoreAPI project aims to offer a foundation for building a fully-fledged virtual bookstore application. By following this API, developers can easily set up book-related operations, manage orders, generate bills, and secure routes using authentication. This project showcases best practices for API design, data modeling, and user authentication in a practical context.
+
+### Features
+- Book Management:
+    - Create, retrieve, update, and delete book records.
+    - View details of individual books.
+- Genre Management:
+    - Create and retrieve genre records.
+- User Authentication:
+    - User registration with unique authentication tokens.
+    - Secure login and token-based authentication for protected routes.
+- Inventory Management:
+    - Update the inventory of books to reflect stock changes.
+- Order Processing:
+    - Create and manage customer orders.
+    - View order history for users.
+- Order Bill Generation:
+    - Generate detailed order bills with transaction information.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
 
@@ -120,7 +145,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [x] Build Book Controller and Router:
   - [x] Create a controller that interacts with the models.
   - [x] Plug in a router to handle incoming requests and route them to the appropriate controller methods.
-- [x] Build Authentication:
+- [ ] Build Authentication:
   - [ ] Use jsonwebtoken library for JWT-based authentication.
   - [ ] Implement authentication middleware to secure routes.
 - [ ] Define Auth Routes:
@@ -136,6 +161,12 @@ _For more examples, please refer to the [Documentation](https://example.com)_
   - [ ] Create routes to manage inventory, such as updating stock levels.
 - [ ] Build B2C Sale Systems:
   - [ ] Design and implement routes to handle customer transactions (e.g., purchasing books).
+- [ ] Build Order Bill System:
+  - [ ] Design the schema to store order information, including user details, items, total cost, and order status.
+  - [ ] Create routes and controllers to handle order creation, retrieval, and updates.
+  - [ ] Implement logic to calculate the total cost of items in an order.
+  - [ ] Develop a system to track order status (pending, processing, shipped, delivered, etc.).
+  - [ ] Build endpoints for users to view their order history and status.
 
 See the [open issues][issues-url] for a full list of proposed features (and known issues).
 
@@ -153,9 +184,11 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+- twitter: [@TumTheeradach](https://twitter.com/TumTheeradach) 
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+- E-mail: p.tam.theeradach@gmail.com
+
+Project Link: [https://github.com/Tam643/BookStoreAPI](https://github.com/Tam643/BookStoreAPI)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
