@@ -11,7 +11,7 @@
 <div align="center">
 
   <h3 align="center">BookStoreAPI</h3>
-
+This is a basic REST API skeleton written on Javascript.<br>Great for building a starter web API for your front-end<br>(Vue, React, Angular, or anything that can consume an API).
   <p align="center">
     <a href="https://github.com/Tam643/BookStoreAPI/issues">Report Bug</a>
     ·
@@ -20,9 +20,8 @@
 </div>
 
 <!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
+## Table of Contents
+ <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
@@ -43,15 +42,6 @@
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
-</details>
-
-<!-- ABOUT THE PROJECT -->
-
-## About The Project
-
-This is a basic REST API skeleton written on Javascript. Great for building a starter web API for your front-end (Vue, React, Angular, or anything that can consume an API).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
 
@@ -80,15 +70,18 @@ This is a basic REST API skeleton written on Javascript. Great for building a st
    git clone https://github.com/Tam643/BookStoreAPI.git
    ```
 2. Create a .env file:
-    Create a .env file in the project root and set the following variables:
-    ````sh
-    DB_URI=change_to_your_MongoDB_URI
-    JWT_SECRET=change_to_your_secret
-    ````
-    Or you can create the .env file using Command Prompt:
-    ```sh
-    cd bookstoreapi & echo DB_URI=change_to_your_MongoDB_URI JWT_SECRET=change_to_your_secret > .env
-    ````
+   Create a .env file in the project root and set the following variables:
+
+   ```sh
+   DB_URI=change_to_your_MongoDB_URI
+   JWT_SECRET=change_to_your_secret
+   ```
+
+   Or you can create the .env file using Command Prompt:
+
+   ```sh
+   cd bookstoreapi & echo DB_URI=change_to_your_MongoDB_URI JWT_SECRET=change_to_your_secret > .env
+   ```
 
 3. Install NPM packages:
    ```sh
