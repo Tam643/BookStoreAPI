@@ -145,17 +145,17 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [x] Build Book Controller and Router:
   - [x] Create a controller that interacts with the models.
   - [x] Plug in a router to handle incoming requests and route them to the appropriate controller methods.
-- [ ] Build Authentication:
-  - [ ] Use jsonwebtoken library for JWT-based authentication.
-  - [ ] Implement authentication middleware to secure routes.
-- [ ] Define Auth Routes:
-  - [ ] Create endpoints for user registration, login, and logout.
-  - [ ] Implement controllers to handle these routes.
-- [ ] Create Users Model and Auth Controller:
-  - [ ] Design the user model to store user information.
-  - [ ] Build controllers to manage user registration and authentication.
-- [ ] Build EnsureLogin Middleware:
-  - [ ] Develop middleware that checks if a user is authenticated before allowing access to certain routes.
+- [x] Build Authentication:
+  - [x] Use jsonwebtoken library for JWT-based authentication.
+  - [x] Implement authentication middleware to secure routes.
+- [x] Define Auth Routes:
+  - [x] Create endpoints for user registration, and login.
+  - [x] Implement controllers to handle these routes.
+- [x] Create Users Model and Auth Controller:
+  - [x] Design the user model to store user information.
+  - [x] Build controllers to manage user registration and authentication.
+- [x] Build EnsureLogin Middleware:
+  - [x] Develop middleware that checks if a user is authenticated before allowing access to certain routes.
 - [ ] Build Inventory for a Book:
   - [ ] Extend the book model to include inventory-related information.
   - [ ] Create routes to manage inventory, such as updating stock levels.

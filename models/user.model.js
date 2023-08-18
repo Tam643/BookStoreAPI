@@ -7,9 +7,49 @@ module.exports = (mongoose) => {
       trim: true,
       lowercase: true
     },
+    address:{
+      recipientname:{type: String,trim: true,lowercase: true},
+      houseNumber: {
+        type: String,
+        trim: true,
+      },
+      village: {
+        type: String,
+        trim: true,
+      },
+      lane: {
+        type: String,
+        trim: true,
+      },
+      road: {
+        type: String,
+        trim: true,
+      },
+      subdistrict: {
+        type: String,
+        trim: true,
+      },
+      district: {
+        type: String,
+        trim: true,
+      },
+      province: {
+        type: String,
+        trim: true,
+      },
+      postalCode: {
+        type: String,
+        trim: true,
+      },
+    },
     salt: {
       type: Buffer,
       required: true,
+    },
+    role: {
+      type: String,
+      enum: ['manager', 'employee', 'customer'],
+      default: 'customer',
     },
     password_hashed: {
       type: String,

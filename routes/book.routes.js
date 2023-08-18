@@ -1,14 +1,14 @@
 const express = require('express');
 const { bookController } = require('../controllers');
-const { formidable } = require('../middlewares');
+const { formidable, ensureLogin } = require('../middlewares');
 const router = express.Router();
 
 router.route('/')
     .get(bookController.allBooks)
-    .post(formidable, bookController.create);
+    .post(ensureLogin(["employee", "manager"]),formidable, bookController.create);
 router.route('/:id')
     .get(bookController.detail)
-    .put(formidable, bookController.update)
-    .delete(bookController.deleteBook);
+    .put(ensureLogin(["employee", "manager"]),formidable, bookController.update)
+    .delete(ensureLogin(["employee", "manager"]),bookController.deleteBook);
 
 module.exports = router;
