@@ -3,7 +3,6 @@ const { jwt, secretKey } = require('../configs/jwt.config');
 
 module.exports = (roles = ['customer']) => (req, res, next) => {
     const token = req.header('Authorization');
-    console.log(token)
 
     if (!token) {
         return res.status(401).json({ success: false, error: 'No token provided.' });
@@ -11,7 +10,6 @@ module.exports = (roles = ['customer']) => (req, res, next) => {
 
     jwt.verify(token, secretKey, (err, decoded) => {
         if (err) {
-            console.log(err)
             return res.status(403).json({ success: false, error: 'Failed to authenticate token.' });
         }
 
