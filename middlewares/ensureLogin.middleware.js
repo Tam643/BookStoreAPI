@@ -2,12 +2,13 @@ const { jwt, secretKey } = require('../configs/jwt.config');
 
 
 module.exports = (roles = ['customer']) => (req, res, next) => {
-    const token = req.header('Authorization');
+    const authHeader = req.header('Authorization');
 
-    if (!token) {
-        return res.status(401).json({ success: false, error: 'No token provided.' });
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      return res.status(401).json({ success: false, error: 'No token provided.' });
     }
 
+    const token = authHeader.substring(7);
     jwt.verify(token, secretKey, (err, decoded) => {
         if (err) {
             return res.status(403).json({ success: false, error: 'Failed to authenticate token.' });

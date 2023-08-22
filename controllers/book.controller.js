@@ -1,17 +1,9 @@
 const fs = require('fs-extra');
 const { createBookSchema, bookSchema, searchBookSchema } = require('../validators');
 const { findAndCreateGenres } = require('../services');
+const { findKeyInObject } = require('../Utils');
 const db = require('../models');
 
-// Helper Find name of key in object
-function findKeyInObject(obj, keyToFind) {
-    for (let key in obj) {
-        if (key === keyToFind) {
-            return true; // Key found
-        }
-    }
-    return false; // Key not found
-}
 
 // Create new Book
 async function create(req, res) {
