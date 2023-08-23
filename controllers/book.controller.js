@@ -59,7 +59,7 @@ async function update(req, res) {
         const ObjectId = req.params.id;
         const updatedDocument = await db.book.findByIdAndUpdate(ObjectId, value, { new: true });
         if (!updatedDocument) {
-            return res.sctatus(404).json({ success: false, error: 'The requested resource was not found.' })
+            return res.status(404).json({ success: false, error: 'The requested resource was not found.' })
         }
         return res.status(200).json({ success: true, message: 'The book was successfully updated' })
     } catch (error) {

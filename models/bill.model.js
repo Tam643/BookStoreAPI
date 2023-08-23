@@ -7,14 +7,15 @@ module.exports = (mongoose) => {
           },
           items: [
             {
-              bookID: {
+              _id: {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: 'Book', // Reference to the Book model
                 required: true,
               },
+              amount:{type: Number,required: true},
               priceType: {
-                  type: { type: String,required: true, trim: true },
-                  price: { type: Number,required: true, trim: true },
+                  type: { type: String,required: true },
+                  price: { type: Number,required: true },
               },
             },
           ],
