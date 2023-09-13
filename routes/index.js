@@ -1,7 +1,6 @@
 module.exports = app => {
-  app.use('/genre', require('./genre.routes'));
-  app.use('/user', require('./user.routes'));
-  app.use('/book', require('./book.routes'));
   app.use('/auth', require('./auth.routes'));
-  app.use('/bill', require('./bills.routes.js'));
+  app.use('/users', require('./user.routes'));
+  app.use('/books', require('./book.routes'));
+  app.use('/bills', require('./bills.routes.js'));
 };

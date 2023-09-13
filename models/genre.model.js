@@ -1,7 +1,6 @@
 module.exports = (mongoose) => {
     const genreSchema = new mongoose.Schema({
         name: { type: String, required: true, trim: true, index: true, unique: true },
-        
     },{ timestamps: true })
 
     genreSchema.method("toJSON", function () {

@@ -5,10 +5,11 @@ module.exports = (mongoose) => {
       required: true,
       unique: true,
       trim: true,
-      lowercase: true
+      lowercase: true,
+      index: true
     },
     address:{
-      recipientname:{type: String,trim: true,lowercase: true},
+      recipientname:{type: String,trim: true,lowercase: true,index: true},
       houseNumber: {
         type: String,
         trim: true,
@@ -28,18 +29,22 @@ module.exports = (mongoose) => {
       subdistrict: {
         type: String,
         trim: true,
+        index: true
       },
       district: {
         type: String,
         trim: true,
+        index: true
       },
       province: {
         type: String,
         trim: true,
+        index: true
       },
       postalCode: {
         type: String,
         trim: true,
+        index: true
       },
     },
     salt: {

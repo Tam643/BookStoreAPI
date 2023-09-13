@@ -17,34 +17,6 @@ async function findAndCreateGenres(genres, db) {
     }
 }
 
-async function findAndReturnData(datas, db) {
-    try {
-        const books = await db.book.find().select(["_id", "title", "prices"]);
-        const items = [];
-        let totalAmount = 0;
-
-        datas.forEach(data => {
-            const book = books.find(book => book._id == data.book);
-            if (book) {
-                const price = book.prices.find(price => price._id == data.price);
-                if (price) {
-                    totalAmount += (parseInt(price.price) * data.amount);
-                    items.push({
-                        _id: data.book,
-                        amount:data.amount,
-                        priceType: { type: price.type, price: parseInt(price.price) }
-                    });
-                }
-            }
-        });
-        return { items, totalAmount };
-    } catch (err) {
-        console.error('Error find and return data:', err);
-        throw err;
-    }
-}
-
 module.exports = {
     findAndCreateGenres,
-    findAndReturnData
 }

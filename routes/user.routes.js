@@ -4,8 +4,9 @@ const { userController } = require('../controllers');
 const { ensureLogin } = require('../middlewares');
 
 router.route('/')
-  .get(userController.find)
-  .put(ensureLogin(['manager','customer','employee']),userController.update)
-  .delete(ensureLogin(['manager']),userController.onDelete);
+    .get(ensureLogin(['manager']), userController.search)
+    .put(ensureLogin(), userController.update)
+    .delete(ensureLogin(['manager']), userController.onDelete);
+router.get('/detail', ensureLogin(), userController.detail);
 
 module.exports = router;

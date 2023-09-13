@@ -4,9 +4,10 @@ const { billController } = require('../controllers');
 const { ensureLogin } = require('../middlewares');
 
 router.route('/')
-    .get(ensureLogin(['customer','employee','manager']),billController.findAllBillByuserID)
-    .post(ensureLogin(),billController.create);
+    .get(ensureLogin(),billController.findAllBillByuserID)
+    .post(ensureLogin(['customer']),billController.create);
 router.route('/:billId')
-    .put(ensureLogin(['customer','employee','manager']),billController.update)
+    .get(ensureLogin(),billController.getDetailByID)
+    .put(ensureLogin(),billController.update)
 
 module.exports = router;
