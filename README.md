@@ -38,10 +38,14 @@ This is a basic REST API skeleton written on Javascript.<br>Great for building a
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
+    <li>
+      <a href="#usage">Usage</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
@@ -158,16 +162,18 @@ The installation steps you provided seem to be for setting up a Node.js-based Bo
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- USAGE EXAMPLES -->
-
-The "Usage" section in your project's README is where you can demonstrate how users can interact with your project, provide code examples, and showcase its functionality. Here's an example template for your "Usage" section:
-
----
-
 ## Usage
 
 ### Getting Started
 Now, the BookStore API is up and running locally on your machine.
+Before all should add a seed with the command
+  ```sh
+  npm run seed
+  ```
+After the test you can clear up a database:
+  ```sh
+  npm run clean
+  ```
 
 ### API Endpoints
 
@@ -233,17 +239,6 @@ Here are some examples of how to interact with the API:
   curl http://localhost:3000/books
   ```
 
-- **Create a new book (requires authentication):**
-
-  ```bash
-  curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer your-access-token" -d '{
-    "title": "New Book",
-    "author": "Author Name",
-    "isbn": "978-1234567890",
-    "price": 19.99
-  }' http://localhost:3000/books
-  ```
-
 - **Get a specific book:**
 
   ```bash
@@ -268,16 +263,7 @@ Project Link: [https://github.com/Tam643/BookStoreAPI](https://github.com/Tam643
 
 ## Acknowledgments
 
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
-
-- [Choose an Open Source License](https://choosealicense.com)
-- [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-- [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-- [Malven's Grid Cheatsheet](https://grid.malven.co/)
-- [Img Shields](https://shields.io)
-- [GitHub Pages](https://pages.github.com)
-- [Font Awesome](https://fontawesome.com)
-- [React Icons](https://react-icons.github.io/react-icons/search)
+wait a minute ....
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

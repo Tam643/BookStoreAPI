@@ -10,13 +10,11 @@ All endpoints are relative to the base URL:
 http://localhost:3000
 ```
 
----
 
 ## Authentication
 
-Most of the endpoints in these APIs require authentication using a Bearer token. Include the token in the `'Authorization'` header with the format: `'Bearer your-access-token.'`
+Most of the endpoints in these APIs require authentication using a Bearer token. Include the token in the `"Authorization"` header with the format: `"Bearer your-access-token."`
 
----
 
 ## Auth API
 
@@ -31,8 +29,8 @@ Most of the endpoints in these APIs require authentication using a Bearer token.
 - **Request:**
   - **Content-Type:** `application/json`
   - **Body:**
-    - `'email'` (String, required)
-    - `'password'` (String, required)
+    - `"email"` (String, required)
+    - `"password"` (String, required)
 - **Response:**
   - **Status Code:** 200 OK
   - **Body:**
@@ -58,9 +56,9 @@ Most of the endpoints in these APIs require authentication using a Bearer token.
 - **Request:**
   - **Content-Type:** `application/json`
   - **Body:**
-    - `'email'` (String, required)
-    - `'password'` (String, required)
-    - `'confirmpassword'` (String, required)
+    - `"email"` (String, required)
+    - `"password"` (String, required)
+    - `"confirmpassword"` (String, required)
 - **Response:**
   - **Status Code:** 201 Created
   - **Body:**
@@ -78,7 +76,6 @@ Most of the endpoints in these APIs require authentication using a Bearer token.
     { "success": false, "message": "Email already exists" }
     ```
 
----
 
 ## Books API
 ### Endpoints
@@ -88,37 +85,37 @@ Most of the endpoints in these APIs require authentication using a Bearer token.
 - **Method :** `GET`
 - **Description :** Retrieve a list of all books in the bookstore.
 - **Query Parameters (Optional) :**
-  - `'title'` (String) - The title of the book to retrieve.
-  - `'author'` (String) - The author of the book to retrieve.
-  - `'isbn'` (Integer) - The unique ISBN of the book number to retrieve.
-  - `'genres'` (String) - The genres of the book to retrieve.
-  - `'publisher'` (String) - The publisher of the book to retrieve.
+  - `"title"` (String) - The title of the book to retrieve.
+  - `"author"` (String) - The author of the book to retrieve.
+  - `"isbn"` (Integer) - The unique ISBN of the book number to retrieve.
+  - `"genres"` (String) - The genres of the book to retrieve.
+  - `"publisher"` (String) - The publisher of the book to retrieve.
 - **Response:**
   - **Status Code:** 200 OK
   - **Body:**
     ```json
     {
-      success : true,
-      data : [
+      "success" : true,
+      "data" : [
         {
-          _id: (ObjectID),
-          image: {
-            filename: (String),
-            data: (Binary),
-            type: (String)
+          "_id": "(ObjectID)",
+          "image": {
+            "filename": "(String)",
+            "data": "(Binary)",
+            "type": "(String)"
           },
-          title: (String),
-          author: (String),
-          genres: [ (String), (String) ],
-          prices: [
+          "title": "(String)",
+          "author": "(String)",
+          "genres": [ "(String)", "(String)" ],
+          "prices": [
             {
-              _id: (OjectID),
-              price: (Float 2 digit),
-              type: (String)
+              "_id": "(OjectID)",
+              "price": "(Float 2 digit)",
+              "type": "(String)"
             }
           ],
-          description: (String),
-          publisher: (String)
+          "description": "(String)",
+          "publisher": "(String)"
         },
       ]
     }
@@ -141,26 +138,26 @@ Most of the endpoints in these APIs require authentication using a Bearer token.
   - **Body:**
     ```json
     {
-      success : true,
-      data : {
-          _id: (ObjectID),
-          image: {
-            filename: (String),
-            data: (Binary),
-            type: (String)
+      "success" : true,
+      "data" : {
+          "_id": "(ObjectID)",
+          "image": {
+            "filename": "(String)",
+            "data": "(Binary)",
+            "type": "(String)"
           },
-          title: (String),
-          author: (String),
-          genres: [ (String), (String) ],
-          prices: [
+          "title": "(String)",
+          "author": "(String)",
+          "genres": [ "(String)", "(String)" ],
+          "prices": [
             {
-              _id: (OjectID),
-              price: (Float 2 digit),
-              type: (String)
+              "_id": "(ObjectID)",
+              "price": "(Float 2 digit)",
+              "type": "(String)"
             }
           ],
-          description: (String),
-          publisher: (String)
+          "description": "(String)",
+          "publisher": "(String)"
       },
     }
     ```
@@ -185,14 +182,14 @@ Most of the endpoints in these APIs require authentication using a Bearer token.
 
   - **Content-Type:** `multipart/form-data`
   - **Body:**
-    - `'title'` (String, required) - The title of the book.
-    - `'image'` (File, required) - The book cover image file (e.g., JPEG, PNG).
-    - `'author'` (String, required) - The author of the book.
-    - `'description'` (String, required) - The description of the book.
-    - `'genres'` (Array, required) - The genres of the book. ( _example: [ "Romance", "Darma" ]_ )
-    - `'prices'` (Array, required) - The prices of the book. ( _example: [ { price: 123.50, type: 'E-book' } ]_ )
-    - `'ISBN'` (String, required) - The ISBN of the book.
-    - `'publisher'` (String, required) - The publisher of the book.
+    - `"title"` (String, required) - The title of the book.
+    - `"image"` (File, required) - The book cover image file (e.g., JPEG, PNG).
+    - `"author"` (String, required) - The author of the book.
+    - `"description"` (String, required) - The description of the book.
+    - `"genres"` (Array, required) - The genres of the book. ( _example: [ "Romance", "Darma" ]_ )
+    - `"prices"` (Array, required) - The prices of the book. ( _example: [ { price: 123.50, type: "E-book" } ]_ )
+    - `"ISBN"` (String, required) - The ISBN of the book.
+    - `"publisher"` (String, required) - The publisher of the book.
 
 - **Response:**
   - **Status Code:** 201 Created
@@ -220,11 +217,11 @@ Most of the endpoints in these APIs require authentication using a Bearer token.
   - **Status Code:** 403 Forbidden
   - **Body:**
     ```json
-    { success: false, message: 'Failed to authenticate token.' }
+    { "success": false, "message": "Failed to authenticate token." }
     ```
     _or_
     ```json
-    { success: false, message: 'Insufficient permissions.' }
+    { "success": false, "message": "Insufficient permissions." }
     ```
 
 #### Updated a Specific Book (Authenticated)
@@ -243,14 +240,14 @@ Most of the endpoints in these APIs require authentication using a Bearer token.
 - **Request:**
   - **Content-Type:** `multipart/form-data`
   - **Body:** _Min one property_
-    - `'title'` (String) - The title of the book.
-    - `'image'` (File) - The book cover image file (e.g., JPEG, PNG).
-    - `'author'` (String) - The author of the book.
-    - `'description'` (String) - The description of the book.
-    - `'genres'` (Array) - The genres of the book. ( _example: [ "Romance", "Darma" ]_ )
-    - `'prices'` (Array) - The prices of the book. ( _example: [ { price: 123.50, type: 'E-book' } ]_ )
-    - `'ISBN'` (String) - The ISBN of the book.
-    - `'publisher'` (String) - The publisher of the book.
+    - `"title"` (String) - The title of the book.
+    - `"image"` (File) - The book cover image file (e.g., JPEG, PNG).
+    - `"author"` (String) - The author of the book.
+    - `"description"` (String) - The description of the book.
+    - `"genres"` (Array) - The genres of the book. ( _example: [ "Romance", "Darma" ]_ )
+    - `"prices"` (Array) - The prices of the book. ( _example: [ { price: 123.50, type: "E-book" } ]_ )
+    - `"ISBN"` (String) - The ISBN of the book.
+    - `"publisher"` (String) - The publisher of the book.
 
 - **Response:**
   - **Status Code:** 200 OK
@@ -271,11 +268,11 @@ Most of the endpoints in these APIs require authentication using a Bearer token.
   - **Status Code:** 403 Forbidden
   - **Body:**
     ```json
-    { success: false, message: 'Failed to authenticate token.' }
+    { "success": false, "message": "Failed to authenticate token." }
     ```
     _or_
     ```json
-    { success: false, message: 'Insufficient permissions.' }
+    { "success": false, "message": "Insufficient permissions." }
     ```
   - **Status Code:** 404 Not Found
   - **Body:**
@@ -305,11 +302,11 @@ Most of the endpoints in these APIs require authentication using a Bearer token.
   - **Status Code:** 403 Forbidden
   - **Body:**
     ```json
-    { success: false, message: 'Failed to authenticate token.' }
+    { "success": false, "message": "Failed to authenticate token." }
     ```
     _or_
     ```json
-    { success: false, message: 'Insufficient permissions.' }
+    { "success": false, "message": "Insufficient permissions." }
     ```
   - **Status Code:** 404 Not Found
   - **Body:**
@@ -317,7 +314,6 @@ Most of the endpoints in these APIs require authentication using a Bearer token.
     { "success": false, "message": "The requested resource was not found." }
     ```
 
----
 
 ## Users API
 ### Endpoints
@@ -332,37 +328,37 @@ Most of the endpoints in these APIs require authentication using a Bearer token.
 - **Authorization:**
   - `Manager role`
 - **Query Parameters (Optional) :**
-  - `'_id'` (String) - The object id of the user to retrieve.
-  - `'email'` (String) - The email of the user to retrieve.
-  - `'address'` (Object) - The addres object of the user number to retrieve. 
+  - `"_id"` (String) - The object id of the user to retrieve.
+  - `"email"` (String) - The email of the user to retrieve.
+  - `"address"` (Object) - The addres object of the user number to retrieve. 
   _Example :_
     ```json
     address :{
-      recipientname: (String),
-      houseNumber: (String),
-      village: (String),
-      lane: (String),
-      road: (String),
-      subdistrict: (String),
-      district: (String),
-      province: (String),
-      postalCode: (String),
+      "recipientname": "(String)",
+      "houseNumber": "(String)",
+      "village": "(String)",
+      "lane": "(String)",
+      "road": "(String)",
+      "subdistrict": "(String)",
+      "district": "(String)",
+      "province": "(String)",
+      "postalCode": "(String)",
     }
     ```
-  - `'role'` (String) - The role of the user to retrieve.
-  _Example: ['Manager','Employee','Customer']_
+  - `"role"` (String) - The role of the user to retrieve.
+  _Example: ["Manager","Employee","Customer"]_
 - **Response:**
   - **Status Code:** 200 OK
   - **Body:**
     ```json
     {
-      success : true,
-      data : [
+      "success" : true,
+      "data" : [
         {
-          _id: (ObjectID),
-          email: (String),
-          role: (String),
-          createAt: (Timestamp),
+          "_id": "(ObjectID)",
+          "email": "(String)",
+          "role": "(String)",
+          "createAt": "(Timestamp)",
         },
       ]
     }
@@ -375,11 +371,11 @@ Most of the endpoints in these APIs require authentication using a Bearer token.
   - **Status Code:** 403 Forbidden
   - **Body:**
     ```json
-    { success: false, message: 'Failed to authenticate token.' }
+    { "success": false, "message": "Failed to authenticate token." }
     ```
     _or_
     ```json
-    { success: false, message: 'Insufficient permissions.' }
+    { "success": false, "message": "Insufficient permissions." }
     ```
   - **Status Code:** 404 Not Found
   - **Body:**
@@ -400,20 +396,20 @@ Most of the endpoints in these APIs require authentication using a Bearer token.
 - **Request:**
   - **Content-Type:** `application/json`
   - **Body:** _Min one property_
-    - `'id'` (String) - The id of the book. **(Only manager role authorzation)**
+    - `"id"` (String) - The id of the book. **(Only manager role authorzation)**
 
 - **Response:**
   - **Status Code:** 200 OK
   - **Body:**
     ```json
     {
-      success : true,
-      data : {
-          _id: (ObjectID),
-          email: (String),
-          role: (String),
-          address: (Object),
-          createAt: (Timestamp),
+      "success" : true,
+      "data" : {
+          "_id": "(ObjectID)",
+          "email": "(String)",
+          "role": "(String)",
+          "address": "(Object)",
+          "createAt": "(Timestamp)",
       },
     }
     ```
@@ -425,11 +421,11 @@ Most of the endpoints in these APIs require authentication using a Bearer token.
   - **Status Code:** 403 Forbidden
   - **Body:**
     ```json
-    { success: false, message: 'Failed to authenticate token.' }
+    { "success": false, "message": "Failed to authenticate token." }
     ```
     _or_
     ```json
-    { success: false, message: 'Insufficient permissions.' }
+    { "success": false, "message": "Insufficient permissions." }
     ```
   - **Status Code:** 404 Not Found
   - **Body:**
@@ -476,11 +472,11 @@ Most of the endpoints in these APIs require authentication using a Bearer token.
   - **Status Code:** 403 Forbidden
   - **Body:**
     ```json
-    { success: false, message: 'Failed to authenticate token.' }
+    { "success": false, "message": "Failed to authenticate token." }
     ```
     _or_
     ```json
-    { success: false, message: 'Insufficient permissions.' }
+    { "success": false, "message": "Insufficient permissions." }
     ```
   - **Status Code:** 404 Not Found
   - **Body:**
@@ -509,20 +505,18 @@ Most of the endpoints in these APIs require authentication using a Bearer token.
   - **Status Code:** 403 Forbidden
   - **Body:**
     ```json
-    { success: false, message: 'Failed to authenticate token.' }
+    { "success": false, "message": "Failed to authenticate token." }
     ```
     _or_
     ```json
-    { success: false, message: 'Insufficient permissions.' }
+    { "success": false, "message": "Insufficient permissions." }
     ```
   - **Status Code:** 404 Not Found
   - **Body:**
     ```json
     { "success": false, "message": "The requested resource was not found." }
     ```
-
----
-
+    
 ## Bills API
 ### Endpoints
 #### Search All Bills
@@ -531,7 +525,7 @@ Most of the endpoints in these APIs require authentication using a Bearer token.
 - **Method :** `GET`
 - **Description :** Retrieve a list of all bills in the bookstore.
 - **Query Parameters (Optional) :**
-  - `'status'` (String) - The status of the bill to retrieve. **(Only manager role and employee role authorzation)**
+  - `"status"` (String) - The status of the bill to retrieve. **(Only manager role and employee role authorzation)**
     _Example: "pending" or "completed" or "cancled"_ 
 - **Authentication**:
   - Include an `Authorization` header with a Bearer token in the request.
@@ -545,14 +539,14 @@ Most of the endpoints in these APIs require authentication using a Bearer token.
   - **Body:**
     ```json
     {
-      success : true,
-      data : [
+      "success" : true,
+      "data" : [
         {
-          _id: (ObjectID),
-          totleAmount: (Float),
-          status: (String),
-          createdAt: (Timestamp),
-          updatedAt: (Timestamp)
+          "_id": "(ObjectID"),
+          "totleAmount": "(Float)",
+          "status": "(String)",
+          "createdAt": "(Timestamp)",
+          "updatedAt": "(Timestamp)"
         },
       ]
     }
@@ -565,11 +559,11 @@ Most of the endpoints in these APIs require authentication using a Bearer token.
   - **Status Code:** 403 Forbidden
   - **Body:**
     ```json
-    { success: false, message: 'Failed to authenticate token.' }
+    { "success": false, "message": "Failed to authenticate token." }
     ```
     _or_
     ```json
-    { success: false, message: 'Insufficient permissions.' }
+    { "success": false, "message": "Insufficient permissions." }
     ```
   - **Status Code:** 404 Not Found
   - **Body:**
@@ -596,39 +590,37 @@ Most of the endpoints in these APIs require authentication using a Bearer token.
   - **Body:**
     ```json
     {
-      success : true,
-      data : {
-          _id : (ObjectID),
-          user: {
-            address: {
-              recipientname: (String),
-              houseNumber: (String),
-              village: (String),
-              lane: (String),
-              road: (String),
-              subdistrict: (String),
-              district: (String),
-              province: (String),
-              postalCode: (String)
+      "success" : true,
+      "data" : {
+          "_id" : "(ObjectID)",
+          "user": {
+            "address": {
+              "recipientname": "(String)",
+              "houseNumber": "(String)",
+              "village": "(String)",
+              "lane": "(String)",
+              "road": "(String)",
+              "subdistrict": "(String)",
+              "district": "(String)",
+              "province": "(String)",
+              "postalCode": "(String)"
             },
-            email: (String),
-            role: (String),
-            id: (ObjectID)
+            "email": "(String)",
+            "role": "(String)",
+            "id": "(ObjectID)"
           },
-          items:[
-            {
-              price: {
-                type: (String),
-                price: (Float)
+          "items":[{
+              "price": {
+                "type": "(String)",
+                "price": "(Float)"
               },
-              book: {
-                _id: (ObjectID),
-                title: (String)
+              "book": {
+                "_id": "(ObjectID)",
+                "title": "(String)"
               },
-              amount: (Float),
-              _id: '(ObjectID)'
-            }
-          ]
+              "amount": "(Float)",
+              "_id": "(ObjectID)"
+            }]
       },
     }
     ```
@@ -640,11 +632,11 @@ Most of the endpoints in these APIs require authentication using a Bearer token.
   - **Status Code:** 403 Forbidden
   - **Body:**
     ```json
-    { success: false, message: 'Failed to authenticate token.' }
+    { "success": false, "message": "Failed to authenticate token." }
     ```
     _or_
     ```json
-    { success: false, message: 'Insufficient permissions.' }
+    { "success": false, "message": "Insufficient permissions." }
     ```
   - **Status Code:** 404 Not Found
   - **Body:**
@@ -667,12 +659,12 @@ Most of the endpoints in these APIs require authentication using a Bearer token.
       ```json
         items:[
           {
-            book: (ObjectID),
-            price: {
-              type: (String),
-              price:(Float)
+            "book": "(ObjectID)",
+            "price": {
+              "type": "(String)",
+              "price":"(Float)"
             },
-            amount: (Integer)
+            "amount": "(Integer)"
           }
         ]
       ```
@@ -696,15 +688,15 @@ Most of the endpoints in these APIs require authentication using a Bearer token.
   - **Status Code:** 403 Forbidden
   - **Body:**
     ```json
-    { success: false, message: 'Failed to authenticate token.' }
+    { "success": false, "message": "Failed to authenticate token." }
     ```
     _or_
     ```json
-    { success: false, message: 'Insufficient permissions.' }
+    { "success": false, "message": "Insufficient permissions." }
     ```
      _or_
     ```json
-    { success: false, message: 'Please update your address' }
+    { "success": false, "message": "Please update your address" }
     ```
   - **Status Code:** 404 Not Found
   - **Body:**
@@ -729,8 +721,8 @@ Most of the endpoints in these APIs require authentication using a Bearer token.
 - **Request: (Optional)**
   - **Content-Type:** `application/json`
   - **Body:**
-    - `'status'` (String) - The status of the bill.
-      _Example: ['pending','cancled','completed']_
+    - `"status"` (String) - The status of the bill.
+      _Example: ["pending","cancled","completed"]_
 - **Response:**
   - **Status Code:** 200 OK
   - **Body:**
@@ -750,11 +742,11 @@ Most of the endpoints in these APIs require authentication using a Bearer token.
   - **Status Code:** 403 Forbidden
   - **Body:**
     ```json
-    { success: false, message: 'Failed to authenticate token.' }
+    { "success": false, "message": "Failed to authenticate token." }
     ```
     _or_
     ```json
-    { success: false, message: 'Insufficient permissions.' }
+    { "success": false, "message": "Insufficient permissions." }
     ```
   - **Status Code:** 404 Not Found
   - **Body:**
@@ -762,7 +754,6 @@ Most of the endpoints in these APIs require authentication using a Bearer token.
     { "success": false, "message": "The requested resource was not found." }
     ```
 
----
 
 
 ## Error Handling
@@ -778,7 +769,6 @@ Most of the endpoints in these APIs require authentication using a Bearer token.
 - **Status Code:** 500 Internal Server Error
   - Returned when the server encounters an unexpected error or exception while processing the request. It is a generic status code indicating a server-side problem, and the client typically cannot take any specific action to resolve it.
 
----
 
 ## Examples
 
