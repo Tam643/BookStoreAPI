@@ -1,0 +1,72 @@
+[
+  {
+    "_id": "64f9dac094e8f3b8b6386275",
+    "name": "Mystery",
+    "__v": 0,
+    "createdAt": "2023-09-07T14:14:24.044Z",
+    "updatedAt": "2023-09-07T14:14:24.044Z"
+  },
+  {
+    "_id": "64f9dac094e8f3b8b6386276",
+    "name": "Romance",
+    "__v": 0,
+    "createdAt": "2023-09-07T14:14:24.069Z",
+    "updatedAt": "2023-09-07T14:14:24.069Z"
+  },
+  {
+    "_id": "64f9dac094e8f3b8b6386277",
+    "name": "Science Fiction",
+    "__v": 0,
+    "createdAt": "2023-09-07T14:14:24.070Z",
+    "updatedAt": "2023-09-07T14:14:24.070Z"
+  },
+  {
+    "_id": "64f9dac094e8f3b8b6386278",
+    "name": "Fantasy",
+    "__v": 0,
+    "createdAt": "2023-09-07T14:14:24.070Z",
+    "updatedAt": "2023-09-07T14:14:24.070Z"
+  },
+  {
+    "_id": "64f9dac094e8f3b8b6386279",
+    "name": "Thriller",
+    "__v": 0,
+    "createdAt": "2023-09-07T14:14:24.071Z",
+    "updatedAt": "2023-09-07T14:14:24.071Z"
+  },
+  {
+    "_id": "64f9dac094e8f3b8b638627a",
+    "name": "Drama",
+    "__v": 0,
+    "createdAt": "2023-09-07T14:14:24.071Z",
+    "updatedAt": "2023-09-07T14:14:24.071Z"
+  },
+  {
+    "_id": "64f9dac094e8f3b8b638627b",
+    "name": "Non-Fiction",
+    "__v": 0,
+    "createdAt": "2023-09-07T14:14:24.072Z",
+    "updatedAt": "2023-09-07T14:14:24.072Z"
+  },
+  {
+    "_id": "64f9dac094e8f3b8b638627c",
+    "name": "Historical Fiction",
+    "__v": 0,
+    "createdAt": "2023-09-07T14:14:24.072Z",
+    "updatedAt": "2023-09-07T14:14:24.072Z"
+  },
+  {
+    "_id": "64f9dac094e8f3b8b638627d",
+    "name": "Biography",
+    "__v": 0,
+    "createdAt": "2023-09-07T14:14:24.073Z",
+    "updatedAt": "2023-09-07T14:14:24.073Z"
+  },
+  {
+    "_id": "64f9dac094e8f3b8b638627e",
+    "name": "Horror",
+    "__v": 0,
+    "createdAt": "2023-09-07T14:14:24.073Z",
+    "updatedAt": "2023-09-07T14:14:24.073Z"
+  }
+]

@@ -53,13 +53,10 @@ The BookStoreAPI project aims to offer a foundation for building a fully-fledged
 - Book Management:
     - Create, retrieve, update, and delete book records.
     - View details of individual books.
-- Genre Management:
-    - Create and retrieve genre records.
 - User Authentication:
     - User registration with unique authentication tokens.
     - Secure login and token-based authentication for protected routes.
-- Inventory Management:
-    - Update the inventory of books to reflect stock changes.
+    - Role-Based Access Control (RBAC) is help control what different users can do within the system.
 - Order Processing:
     - Create and manage customer orders.
     - View order history for users.
@@ -84,35 +81,77 @@ The BookStoreAPI project aims to offer a foundation for building a fully-fledged
 ## Getting Started
 
 ### Prerequisites
+Before setting up a Node.js application with Docker and MongoDB, you need to ensure that you have the necessary prerequisites in place. Below are the prerequisites for setting up this environment:
 
-- Node.js <b>14</b>+
-- MongoDB Cloud Account - [Create a new Account](https://account.mongodb.com/account/login)
+1. **Node.js and npm:**
+   - **Node.js:** You should have Node.js installed on your system. You can download it from the official Node.js website: https://nodejs.org/
+   - **npm (Node Package Manager):** npm is usually included with Node.js. You can verify its installation by running `npm -v` in your terminal.
+
+2. **Docker:**
+   - **Docker Desktop (for Windows and macOS):** If you are using Windows or macOS, install Docker Desktop, which includes both Docker Engine and Docker Compose. You can download it from the Docker website: https://www.docker.com/products/docker-desktop
+   - **Docker Engine and Docker Compose (for Linux):** On Linux, you can install Docker Engine and Docker Compose separately. Follow the instructions for your specific Linux distribution on the Docker website: https://docs.docker.com/get-docker/
+
+3. **MongoDB Container Image:**
+   - You'll need access to the official MongoDB Docker image from Docker Hub. You can pull it using the following Docker command:
+     ```
+     docker pull mongo
+     ```
+
+4. **Text Editor or IDE:**
+   - You should have a code editor or an integrated development environment (IDE) installed for writing Node.js applications. Popular choices include Visual Studio Code, Sublime Text, and WebStorm.
+
+The installation steps you provided seem to be for setting up a Node.js-based BookStore API with MongoDB as the database and Docker for containerization. Here's a breakdown of the steps:
 
 ### Installation
 
-1. Clone the repo
+1. **Clone the repo:**
+
+   Clone the project repository from GitHub using the `git clone` command:
+
    ```sh
    git clone https://github.com/Tam643/BookStoreAPI.git
    ```
-2. Create a .env file:
-   Create a .env file in the project root and set the following variables:
+
+2. **Create a .env file:**
+
+   Create a `.env` file in the project's root directory and set the following environment variables inside it:
 
    ```sh
    DB_URI=change_to_your_MongoDB_URI
    JWT_SECRET=change_to_your_secret
    ```
 
-   Or you can create the .env file using Command Prompt:
+   You can manually create the `.env` file and add these variables, or you can create it using the Command Prompt:
 
    ```sh
-   cd bookstoreapi & echo DB_URI=change_to_your_MongoDB_URI JWT_SECRET=change_to_your_secret > .env
+   cd BookStoreAPI
+   echo DB_URI=change_to_your_MongoDB_URI JWT_SECRET=change_to_your_secret > .env
    ```
 
-3. Install NPM packages:
+   Replace `change_to_your_MongoDB_URI` with your actual MongoDB connection URI, and `change_to_your_secret` with your desired JWT secret key.
+
+3. **Install NPM packages:**
+
+   Install the required Node.js packages using npm:
+
    ```sh
    npm install
    ```
-4. Start the application:
+
+4. **Start MongoDB:**
+
+   Make sure Docker Desktop is running, and then start a MongoDB container with the following command:
+
+   ```sh
+   docker run -d -p 0.0.0.0:27017:27017 --name mongodb mongo
+   ```
+
+   This command starts a MongoDB container and binds it to IP address `0.0.0.0` on port `27017`.
+
+5. **Start the application:**
+
+   Finally, start the BookStore API application:
+
    ```sh
    npm start
    ```
@@ -121,62 +160,95 @@ The BookStoreAPI project aims to offer a foundation for building a fully-fledged
 
 <!-- USAGE EXAMPLES -->
 
+The "Usage" section in your project's README is where you can demonstrate how users can interact with your project, provide code examples, and showcase its functionality. Here's an example template for your "Usage" section:
+
+---
+
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+### Getting Started
+Now, the BookStore API is up and running locally on your machine.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+### API Endpoints
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+The BookStore API provides the following endpoints:
 
-<!-- ROADMAP -->
+- **List All Books:**
 
-## Roadmap
+  ```http
+  GET /books
+  ```
 
-- [x] Setup and Environment
-  - [x] Set up the development environment, including tools and dependencies.
-  - [x] Initialize a project structure and version control.
-- [x] Define Book Routes:
-  - [x] Define API endpoints for CRUD operations on books (Create, Read, Update, Delete).
-  - [x] Implement route handlers for each operation.
-- [x] Create Books and Genres Model
-  - [x] Design your database schema for books and genres.
-  - [x] Define models using an Mongoose library.
-- [x] Build Book Controller and Router:
-  - [x] Create a controller that interacts with the models.
-  - [x] Plug in a router to handle incoming requests and route them to the appropriate controller methods.
-- [x] Build Authentication:
-  - [x] Use jsonwebtoken library for JWT-based authentication.
-  - [x] Implement authentication middleware to secure routes.
-- [x] Define Auth Routes:
-  - [x] Create endpoints for user registration, and login.
-  - [x] Implement controllers to handle these routes.
-- [x] Create Users Model and Auth Controller:
-  - [x] Design the user model to store user information.
-  - [x] Build controllers to manage user registration and authentication.
-- [x] Build EnsureLogin Middleware:
-  - [x] Develop middleware that checks if a user is authenticated before allowing access to certain routes.
-- [ ] Build Inventory for a Book:
-  - [ ] Extend the book model to include inventory-related information.
-  - [ ] Create routes to manage inventory, such as updating stock levels.
-- [ ] Build B2C Sale Systems:
-  - [ ] Design and implement routes to handle customer transactions (e.g., purchasing books).
-- [ ] Build Order Bill System:
-  - [ ] Design the schema to store order information, including user details, items, total cost, and order status.
-  - [ ] Create routes and controllers to handle order creation, retrieval, and updates.
-  - [ ] Implement logic to calculate the total cost of items in an order.
-  - [ ] Develop a system to track order status (pending, processing, shipped, delivered, etc.).
-  - [ ] Build endpoints for users to view their order history and status.
+  Retrieve a list of all books in the bookstore.
 
-See the [open issues][issues-url] for a full list of proposed features (and known issues).
+- **Get a Specific Book:**
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+  ```http
+  GET /books/{id}
+  ```
 
-<!-- LICENSE -->
+  Retrieve a specific book by its ID.
 
-## License
+- **Create a New Book:**
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+  ```http
+  POST /books
+  ```
+
+  Create a new book in the bookstore. Requires authentication.
+
+- **Update a Book:**
+
+  ```http
+  PUT /books/{id}
+  ```
+
+  Update an existing book by its ID. Requires authentication.
+
+- **Delete a Book:**
+
+  ```http
+  DELETE /books/{id}
+  ```
+
+  Delete a book by its ID. Requires authentication.
+
+For more detailed information and examples, please refer to the [API Documentation](https://github.com/Tam643/BookStoreAPI/blob/main/APIDocument.md).
+
+### Authentication
+
+The API uses JSON Web Tokens (JWT) for authentication. To access protected routes, include your JWT token in the `Authorization` header of your requests:
+
+```http
+Authorization: Bearer your-access-token
+```
+
+### Examples
+
+Here are some examples of how to interact with the API:
+
+- **List all books:**
+
+  ```bash
+  curl http://localhost:3000/books
+  ```
+
+- **Create a new book (requires authentication):**
+
+  ```bash
+  curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer your-access-token" -d '{
+    "title": "New Book",
+    "author": "Author Name",
+    "isbn": "978-1234567890",
+    "price": 19.99
+  }' http://localhost:3000/books
+  ```
+
+- **Get a specific book:**
+
+  ```bash
+  curl http://localhost:3000/books/1
+  ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

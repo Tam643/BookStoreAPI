@@ -1,0 +1,65 @@
+[
+  {
+    "_id": "64fc3ca969c999e1fe2ca65d",
+    "email": "manager@manager.com",
+    "salt": "FPmRYK2YpfOlQFzWQ+plWKB0q23oBhV8OHKWv1ZeBI8=",
+    "role": "manager",
+    "password_hashed": "$argon2id$v=19$m=65536,t=3,p=4$FPmRYK2YpfOlQFzWQ+plWKB0q23oBhV8OHKWv1ZeBI8$AimeHNAg4tXUm/LqshSUkcOV3pV4SryXaBBzA9pgSpA",
+    "createdAt": "2023-09-09T09:36:41.507Z",
+    "updatedAt": "2023-09-09T12:35:56.513Z",
+    "__v": 0,
+    "address": {
+      "recipientname": "recipientname manager",
+      "houseNumber": "houseNumber manager",
+      "village": "village manager",
+      "lane": "lane manager",
+      "road": "road manager",
+      "subdistrict": "subdistrict manager",
+      "district": "district manager",
+      "province": "province manager",
+      "postalCode": "postalCode manager"
+    }
+  },
+  {
+    "_id": "64fc3ca969c999e1fe2ca65e",
+    "email": "employee@employee.com",
+    "salt": "1cpeDt85Gm5at5XQ0Ggw1+8ZWUPFfR4vuo1VxeY8Uoc=",
+    "role": "employee",
+    "password_hashed": "$argon2id$v=19$m=65536,t=3,p=4$1cpeDt85Gm5at5XQ0Ggw1+8ZWUPFfR4vuo1VxeY8Uoc$f9SXAOzeOsdNFAgS8ykqAMVrmqgy6PxNaFyY37r01sU",
+    "createdAt": "2023-09-09T09:36:41.508Z",
+    "updatedAt": "2023-09-09T12:35:57.874Z",
+    "__v": 0,
+    "address": {
+      "recipientname": "recipientname employee",
+      "houseNumber": "houseNumber employee",
+      "village": "village employee",
+      "lane": "lane employee",
+      "road": "road employee",
+      "subdistrict": "subdistrict employee",
+      "district": "district employee",
+      "province": "province employee",
+      "postalCode": "postalCode employee"
+    }
+  },
+  {
+    "_id": "64fc3ca969c999e1fe2ca65f",
+    "email": "customer@customer.com",
+    "address": {
+      "recipientname": "recipientname employee",
+      "houseNumber": "houseNumber employee",
+      "village": "village employee",
+      "lane": "lane employee",
+      "road": "road employee",
+      "subdistrict": "subdistrict employee",
+      "district": "district employee",
+      "province": "province employee",
+      "postalCode": "postalCode employee"
+    },
+    "salt": "j4wGEA12OQk9GLUXXk8vVjmK5EHQD4L2f5o90q/H5gQ=",
+    "role": "customer",
+    "password_hashed": "$argon2id$v=19$m=65536,t=3,p=4$j4wGEA12OQk9GLUXXk8vVjmK5EHQD4L2f5o90q/H5gQ$Kg3a18uxgqmNcCfBu3ZgTZSASzKcrkOHZF1H8FSyHBs",
+    "createdAt": "2023-09-09T09:36:41.508Z",
+    "updatedAt": "2023-09-09T12:35:59.177Z",
+    "__v": 0
+  }
+]

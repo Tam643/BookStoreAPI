@@ -1,9 +1,13 @@
 {
   "name": "bookstoreapi",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "node ./bin/www",
+    "seed": "node ./command/addSeed.js",
+    "clean": "node ./command/cleanDatabase.js",
+    "dev": "nodemon ./bin/www",
+    "test": "cls & mocha --check-leaks  -W --exit --timeouts 8000"
   },
   "dependencies": {
     "argon2": "^0.31.0",
@@ -11,7 +15,6 @@
     "cors": "^2.8.5",
     "debug": "~2.6.9",
     "dotenv": "^16.3.1",
-    "express": "~4.16.1",
     "formidable": "^3.5.0",
     "fs-extra": "^11.1.1",
     "joi": "^17.9.2",
